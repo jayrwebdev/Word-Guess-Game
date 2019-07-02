@@ -5,6 +5,9 @@ var guessCounter = 0
 var rightLetters = [];
 var wrongLetters = [];
 
+ function reset() {
+        
+ }
  
 
 document.onkeyup = function (event) {
@@ -17,19 +20,17 @@ document.onkeyup = function (event) {
               // Select Array from WordBank
               //Math.floor(Math.floor() * songStorage.length);
               currentWord = songStorage[Math.floor(Math.random() * songStorage.length)];
-          }
-          //creates Word order for current
-         var currentWordArray = currentWord.split("")
-         var underscoreArr = [];
+        }
+              //creates Word order for current
+             var currentWordArray = currentWord.split("")
+             var underscoreArr = [];
    
-         for (i = 0; i < currentWordArray.length; i++) {
-             underscoreArr.push("_")
-         }
-       //var currentWord = "";
-
+             for (i = 0; i < currentWordArray.length; i++) {
+                 underscoreArr.push("_")
+             }
 
        console.log(currentWord)
-
+       //var currentWord = "";
        var index = currentWord.indexOf(event.key.toLowerCase())
 
 
@@ -54,7 +55,7 @@ document.onkeyup = function (event) {
               if (rightLetters.join("") === currentWord) {
                      wins = wins + 1
                      $("currentword").html(currentWord);
-                     reset
+                     
               }
        }
 
