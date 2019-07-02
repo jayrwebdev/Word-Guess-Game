@@ -1,4 +1,4 @@
-var songStorage = ["the cool", "mural", "jonylah forever", "deliver", "the coolest", "kick push", "manilla"];
+var songStorage = ["chopper", "mural", "stronger", "deliver", "fighters", "real", "manilla"];
 var currentWord 
 var wins = 0
 var guessCounter = 0
@@ -17,6 +17,7 @@ document.onkeyup = function (event) {
               var select = 3
               //Math.floor(Math.floor() * songStorage.length);
               currentWord = songStorage[Math.floor(Math.random()*songStorage.length)];
+               
               
        }
 
@@ -28,21 +29,29 @@ document.onkeyup = function (event) {
               wrongLetters.push(event.key);
               alert("Wrong Word");
        }
-       
+       // Pushes correct Letters to rightLetters Array
        if (index > -1) {
              rightLetters.push(event.key);
              alert("Correct Word")
        }
        console.log(index);
        guessCounter = guessCounter -1
+       // correct letters = correct word add 1 point to wins
+           
+           console.log(rightLetters)
+           console.log(currentWord)
 
-       if (rightLetters === currentWord) {
-           wins = wins + 1 ;
-           function reloadThePage(){
-              window.location.reload();
-           } 
-           reloadThePage();
-       }
+          if (rightLetters.length > 0) {
+                 if (rightLetters.join("") === currentWord) {
+                 wins = wins + 1
+                 $("currentword").html(currentWord);
+            }
+          }
+          
+
+      
+       
+      
        
 
        
@@ -50,7 +59,7 @@ document.onkeyup = function (event) {
        $("#rightletters").html(rightLetters);
        $("#wrongletters").html(wrongLetters);
        $("#guesscounter").html(guessCounter);
-       $("#currentword").html(rightLetters);
+       $("#wins").html(wins);
       
        // if wrong letter, display wrong letter, *
        //everytime user presses letter -1 (guess),*
